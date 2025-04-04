@@ -22,11 +22,17 @@ const Agent = ({
   }: AgentProps) =>{
     const router = useRouter();
     const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
-    const [messages, setMessages] = useState<SavedMessage[]>([]);
+    // const [messages, setMessages] = useState<SavedMessage
+    // []>([]);
     const [isSpeaking, setIsSpeaking] = useState(false);
-    const [lastMessage, setLastMessage] = useState<string>("");
+    // const [lastMessage, setLastMessage] = useState<string>("");
 
+const messages = [
+   'Whats Your name?',
+   'My name is John Doe, nice to meet you!'
+];
 
+const lastMessage = messages[messages.length - 1];
 
 
     return (
@@ -80,7 +86,7 @@ const Agent = ({
     
           <div className="w-full flex justify-center">
             {callStatus !== "ACTIVE" ? (
-              <button className="relative btn-call" onClick={() => handleCall()}>
+              <button className="relative btn-call">
                 <span
                   className={cn(
                     "absolute animate-ping rounded-full opacity-75",
@@ -95,7 +101,7 @@ const Agent = ({
                 </span>
               </button>
             ) : (
-              <button className="btn-disconnect" onClick={() => handleDisconnect()}>
+              <button className="btn-disconnect">
                 End
               </button>
             )}
